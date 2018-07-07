@@ -9,7 +9,7 @@
 
 #include "lblcbuffer.h"
 
-size_t cbuffer_read(cbuffer_t *buffer, char *dest, size_t count)
+size_t cbuffer_read(cbuffer_t *buffer, void *dest, size_t count)
 {
 	size_t i;
 
@@ -28,7 +28,7 @@ size_t cbuffer_read(cbuffer_t *buffer, char *dest, size_t count)
 	return (i);
 }
 
-size_t cbuffer_write(cbuffer_t *buffer, const char *src, size_t count)
+size_t cbuffer_write(cbuffer_t *buffer, const void *src, size_t count)
 {
 	size_t i;
 
