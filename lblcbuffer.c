@@ -12,11 +12,12 @@
 size_t cbuffer_read(cbuffer_t *buffer, void *dest, size_t count)
 {
 	size_t i;
+	char *p = dest;
 
 	if (buffer->writer == buffer->reader && buffer->empty == true)
 		return (0);
 	for (i = 0; i < count; ++i) {
-		dest[i] = *buffer->reader;
+		p[i] = *buffer->reader;
 		++buffer->reader;
 		if (buffer->reader >= buffer->end)
 			buffer->reader = buffer->buffer;
@@ -31,13 +32,14 @@ size_t cbuffer_read(cbuffer_t *buffer, void *dest, size_t count)
 size_t cbuffer_write(cbuffer_t *buffer, const void *src, size_t count)
 {
 	size_t i;
+	const char *p = src;
 
 	if (buffer->writer == buffer->reader && buffer->empty == false)
 		return (0);
 	if (count)
 		buffer->empty = false;
 	for (i = 0; i < count; ++i) {
-		*buffer->writer = src[i];
+		*buffer->writer = p[i];
 		++buffer->writer;
 		if (buffer->writer >= buffer->end)
 			buffer->writer = buffer->buffer;
