@@ -5,12 +5,12 @@
 ** C circular buffer API
 */
 
-#ifndef LBL_CIRCULAR_BUFFER_API_
-# define LBL_CIRCULAR_BUFFER_API_
+#ifndef _LBL_CBUFFER
+# define _LBL_CBUFFER
 
-#include <stdbool.h>
-#include <stddef.h>
-#include <sys/types.h>
+# include <stdbool.h>
+# include <stddef.h>
+# include <sys/types.h>
 
 struct cbuffer_s {
 	int8_t *reader;
@@ -31,4 +31,4 @@ ssize_t cbuffer_getbytes(cbuffer_t *buffer, void *ptr_addr, const char *delim);
 void cbuffer_clear(cbuffer_t *buffer);
 ssize_t cbuffer_retrieve(cbuffer_t *buffer, void *ptr_addr);
 
-#endif /* !LBL_CIRCULAR_BUFFER_API_ */
+#endif /* !_LBL_CBUFFER */
