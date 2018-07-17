@@ -9,10 +9,11 @@
 
 #include "lblcbuffer.h"
 
-ssize_t cbuffer_retrieve(cbuffer_t *buffer, int8_t **pptr)
+ssize_t cbuffer_retrieve(cbuffer_t *buffer, void *ptr_addr)
 {
 	size_t size = buffer->size - cbuffer_lsize(buffer);
 	ssize_t rd;
+	int8_t **pptr = ptr_addr;
 
 	*pptr = malloc(size + 1);
 	if (*pptr == NULL)

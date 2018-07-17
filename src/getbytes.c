@@ -19,10 +19,11 @@ static bool is_delim(int8_t c, const char *delim)
 	return (false);
 }
 
-ssize_t cbuffer_getbytes(cbuffer_t *buffer, int8_t **pline, const char *delim)
+ssize_t cbuffer_getbytes(cbuffer_t *buffer, void *ptr_addr, const char *delim)
 {
 	size_t rd;
 	int8_t *p = buffer->reader;
+	int8_t **pline = ptr_addr;
 
 	if (p == buffer->writer) {
 		*pline = NULL;
