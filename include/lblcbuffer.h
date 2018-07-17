@@ -13,9 +13,9 @@
 #include <sys/types.h>
 
 struct cbuffer_s {
-	char *reader;
-	char *writer;
-	char *buffer;
+	int8_t *reader;
+	int8_t *writer;
+	int8_t *buffer;
 	size_t size;
 	bool empty;
 };
@@ -27,8 +27,8 @@ void cbuffer_destroy(cbuffer_t *buffer);
 size_t cbuffer_read(cbuffer_t *buffer, void *dest, size_t count);
 size_t cbuffer_write(cbuffer_t *buffer, const void *src, size_t count);
 size_t cbuffer_lsize(cbuffer_t *buffer);
-ssize_t cbuffer_getbytes(cbuffer_t *buffer, char **pptr, const char *delim);
+ssize_t cbuffer_getbytes(cbuffer_t *buffer, int8_t **pptr, const char *delim);
 void cbuffer_clear(cbuffer_t *buffer);
-ssize_t cbuffer_retrieve(cbuffer_t *buffer, char **pptr);
+ssize_t cbuffer_retrieve(cbuffer_t *buffer, int8_t **pptr);
 
 #endif /* !LBL_CIRCULAR_BUFFER_API_ */
