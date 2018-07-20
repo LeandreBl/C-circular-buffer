@@ -25,6 +25,6 @@ ssize_t cbuffer_fdwrite(cbuffer_t *buffer, int fd)
 			return (-1);
 		wr = cbuffer_write(buffer, block, rd);
 		total += wr;
-	} while (rd > 0 && rd == wr);
+	} while (rd == (ssize_t)sizeof(block) && rd == wr);
 	return (total);
 }
