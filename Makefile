@@ -18,6 +18,7 @@ SRCS		+= src/lsize.c
 SRCS		+= src/getbytes.c
 SRCS		+= src/clear.c
 SRCS		+= src/retrieve.c
+SRCS		+= src/fdwrite.c
 
 TESTS_SRCS := $(SRCS)
 TESTS_SRCS += tests/cbuffer_tests.c

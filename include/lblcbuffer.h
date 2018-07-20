@@ -12,6 +12,8 @@
 # include <stddef.h>
 # include <sys/types.h>
 
+# define FDWRITE_BUFFER (1 << 12)
+
 struct cbuffer_s {
 	int8_t *reader;
 	int8_t *writer;
@@ -30,5 +32,7 @@ size_t cbuffer_lsize(cbuffer_t *buffer);
 ssize_t cbuffer_getbytes(cbuffer_t *buffer, void *ptr_addr, const char *delim);
 void cbuffer_clear(cbuffer_t *buffer);
 ssize_t cbuffer_retrieve(cbuffer_t *buffer, void *ptr_addr);
+/* Extract all possible data until READ(2) returns 0 from <fd> and write them into the buffer */
+ssize_t cbuffer_fdwrite(cbuffer_t *buffer, int fd);
 
 #endif /* !_LBL_CBUFFER */
