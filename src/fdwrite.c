@@ -15,7 +15,7 @@ ssize_t cbuffer_fdwrite(cbuffer_t *buffer, int fd)
 	ssize_t total = 0;
 	ssize_t rd;
 	ssize_t wr;
-	
+
 	do {
 		rd = cbuffer_lsize(buffer);
 		if (rd > (ssize_t)sizeof(block))
