@@ -32,7 +32,7 @@ size_t cbuffer_lsize(cbuffer_t *buffer);
 ssize_t cbuffer_getbytes(cbuffer_t *buffer, void *ptr_addr, const char *delim);
 void cbuffer_clear(cbuffer_t *buffer);
 ssize_t cbuffer_retrieve(cbuffer_t *buffer, void *ptr_addr);
-/* Extract all possible data until READ(2) returns 0 from <fd> and write them into the buffer */
-ssize_t cbuffer_fdwrite(cbuffer_t *buffer, int fd);
+/* Store <count> bytes from <fd> into the given <buffer>, if count is < 0, it will read all available data */
+ssize_t cbuffer_fdwrite(cbuffer_t *buffer, int fd, ssize_t count);
 
 #endif /* !_LBL_CBUFFER */
