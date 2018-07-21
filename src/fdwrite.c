@@ -13,7 +13,7 @@ static ssize_t rdsize(ssize_t rd, ssize_t count, size_t maxlen)
 {
 	if (rd > (ssize_t)maxlen)
 		rd = (ssize_t)maxlen;
-	if (count > 0 && rd > count)
+	if (count >= 0 && rd > count)
 		rd = count;
 	return (rd);
 }
