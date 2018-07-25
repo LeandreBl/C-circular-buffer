@@ -20,7 +20,7 @@ static ssize_t rdsize(ssize_t rd, ssize_t count, size_t maxlen)
 
 ssize_t cbuffer_fdwrite(cbuffer_t *buffer, int fd, ssize_t count)
 {
-	int8_t block[FDWRITE_BUFFER];
+	int8_t block[FDWRITE_BUFFER_SIZE];
 	ssize_t total = 0;
 	ssize_t rd;
 	ssize_t wr;
