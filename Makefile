@@ -9,8 +9,6 @@ NAME		= liblblcbuffer.so
 
 CC		= gcc
 
-LIBS		=
-
 SRCS		= src/cbuffer.c
 SRCS		+= src/read.c
 SRCS		+= src/write.c
@@ -19,12 +17,13 @@ SRCS		+= src/getbytes.c
 SRCS		+= src/clear.c
 SRCS		+= src/retrieve.c
 SRCS		+= src/fdwrite.c
+SRCS		+= src/size.c
 
-TESTS_SRCS := $(SRCS)
-TESTS_SRCS += tests/cbuffer_tests.c
+TESTS_SRCS	:= $(SRCS)
+TESTS_SRCS	+= tests/cbuffer_tests.c
 
 OBJS		= $(SRCS:.c=.o)
-TESTS_OBJS = $(TESTS_SRCS:.c=.o)
+TESTS_OBJS	= $(TESTS_SRCS:.c=.o)
 
 RM		= rm -f
 

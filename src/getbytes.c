@@ -35,7 +35,9 @@ ssize_t cbuffer_getbytes(cbuffer_t *buffer, void *ptr_addr, const char *delim)
 		else
 			++p;
 	}
-	*pline = malloc(rd + 1 * sizeof(*buffer->buffer));
+	if (p == buffer->writer)
+		--rd;
+	*pline = malloc((rd + 1) * sizeof(*buffer->buffer));
 	if (*pline == NULL)
 		return (-1);
 	cbuffer_read(buffer, *pline, rd);

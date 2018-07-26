@@ -29,6 +29,7 @@ void cbuffer_destroy(cbuffer_t *buffer);
 size_t cbuffer_read(cbuffer_t *buffer, void *dest, size_t count);
 size_t cbuffer_write(cbuffer_t *buffer, const void *src, size_t count);
 size_t cbuffer_lsize(cbuffer_t *buffer);
+size_t cbuffer_size(cbuffer_t *buffer);
 ssize_t cbuffer_getbytes(cbuffer_t *buffer, void *ptr_addr, const char *delim);
 void cbuffer_clear(cbuffer_t *buffer);
 ssize_t cbuffer_retrieve(cbuffer_t *buffer, void *ptr_addr);
