@@ -6,43 +6,54 @@
 */
 
 #include <stdlib.h>
+#include <string.h>
+
+	#include <stdio.h>
+
 
 #include "lblcbuffer.h"
 
-static bool is_delim(int8_t c, const char *delim)
+static bool buff_cmp(cbuffer_t *buffer, const int8_t *from, const char *pattern)
 {
-	while (*delim != 0) {
-		if (*delim == c)
-			return (true);
-		++delim;
+	for (size_t i = 0; pattern[i] != '\0' && from != buffer->writer; ++i) {
+		if (from == buffer->buffer + buffer->size)
+			from = buffer->buffer;
+		if (*from != pattern[i])
+			return (false);
+		++from;
 	}
-	return (false);
+	return (true);
 }
 
-ssize_t cbuffer_getbytes(cbuffer_t *buffer, void *ptr_addr, const char *delim)
+static ssize_t gb_err(int8_t **ptr)
 {
-	size_t rd;
-	int8_t *p = buffer->reader;
-	int8_t **pline = ptr_addr;
+	*ptr = NULL;
+	return (0);
+}
 
-	if (p == buffer->writer) {
-		*pline = NULL;
-		return (0);
-	}
-	for (rd = 1; p != buffer->writer && is_delim(*p, delim) == false; ++rd) {
-		if (p >= buffer->buffer + buffer->size)
+ssize_t cbuffer_getbytes(cbuffer_t *buffer, void *ptr_addr, const char *pattern)
+{
+	ssize_t rd = 0	;
+	int8_t **ptr = ptr_addr;
+	size_t size = cbuffer_size(buffer);
+	size_t len = strlen(pattern);
+	int8_t *p;
+
+	if (len == 0 || buffer->empty == true)
+		return (gb_err(ptr));
+	for (p = buffer->reader; p != buffer->writer && buff_cmp(buffer, p, pattern) == false; ++p) {
+		if (size-- < len)
+			return (gb_err(ptr));
+		if (p == buffer->buffer + buffer->size)
 			p = buffer->buffer;
-		else
-			++p;
+		++rd;
 	}
-	if (p == buffer->writer) {
-		*pline = NULL;
-		return (0);
-	}
-	*pline = malloc((rd + 1) * sizeof(*buffer->buffer));
-	if (*pline == NULL)
+	if (p == buffer->writer)
+		return (gb_err(ptr));
+	rd += len;
+	*ptr = malloc(rd + 1);
+	if (*ptr == NULL)
 		return (-1);
-	cbuffer_read(buffer, *pline, rd);
-	(*pline)[rd] = 0;
-	return (rd);
+	(*ptr)[rd] = 0;
+	return (cbuffer_read(buffer, *ptr, rd));
 }

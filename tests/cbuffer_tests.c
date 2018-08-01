@@ -169,13 +169,13 @@ Test(cbuffer_getbytes, various_tests)
 
 	cbuffer_create(&buffer, 128);
 	cbuffer_write(&buffer, toto, strlen(toto));
-	cr_assert(cbuffer_getbytes(&buffer, &output, "=") == 4);
+	cr_assert(cbuffer_getbytes(&buffer, &output, "age=") == 4);
 	cr_assert(strcmp(output, "age=") == 0);
 	free(output);
 	cr_assert(cbuffer_getbytes(&buffer, &output, ":") == 3);
 	cr_assert(strcmp(output, "14:") == 0);
 	free(output);
-	cr_assert(cbuffer_getbytes(&buffer, &output, "=") == 7);
+	cr_assert(cbuffer_getbytes(&buffer, &output, "taille=") == 7);
 	cr_assert(strcmp(output, "taille=") == 0);
 	free(output);
 	cr_assert(cbuffer_getbytes(&buffer, &output, "!") == 5);
