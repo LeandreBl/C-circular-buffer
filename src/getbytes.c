@@ -31,10 +31,9 @@ static ssize_t gb_err(int8_t **ptr)
 	return (0);
 }
 
-ssize_t cbuffer_getbytes(cbuffer_t *buffer, void *ptr_addr, const char *pattern)
+static ssize_t to_read_cmp(cbuffer_t *buffer, int8_t **ptr, const char *pattern)
 {
-	ssize_t rd = 0	;
-	int8_t **ptr = ptr_addr;
+	ssize_t rd = 0;
 	size_t size = cbuffer_size(buffer);
 	size_t len = strlen(pattern);
 	int8_t *p;
@@ -50,7 +49,17 @@ ssize_t cbuffer_getbytes(cbuffer_t *buffer, void *ptr_addr, const char *pattern)
 	}
 	if (p == buffer->writer)
 		return (gb_err(ptr));
-	rd += len;
+	return (rd + len);
+}
+
+ssize_t cbuffer_getbytes(cbuffer_t *buffer, void *ptr_addr, const char *pattern)
+{
+	ssize_t rd = 0	;
+	int8_t **ptr = ptr_addr;
+	
+	rd = to_read_cmp(buffer, ptr, pattern);
+	if (rd == 0)
+		return (0);
 	*ptr = malloc(rd + 1);
 	if (*ptr == NULL)
 		return (-1);
