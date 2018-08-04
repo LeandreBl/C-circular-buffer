@@ -11,7 +11,7 @@
 	#include <stdio.h>
 
 
-#include "lblcbuffer.h"
+#include "lcbuffer.h"
 
 static bool buff_cmp(cbuffer_t *buffer, const int8_t *from, const char *pattern)
 {

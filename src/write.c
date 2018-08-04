@@ -5,7 +5,7 @@
 ** write
 */
 
-#include "lblcbuffer.h"
+#include "lcbuffer.h"
 
 size_t cbuffer_write(cbuffer_t *buffer, const void *src, size_t count)
 {

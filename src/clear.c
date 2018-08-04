@@ -5,7 +5,7 @@
 ** clear
 */
 
-#include "lblcbuffer.h"
+#include "lcbuffer.h"
 
 void cbuffer_clear(cbuffer_t *buffer)
 {

@@ -8,7 +8,7 @@
 #include <criterion/criterion.h>
 #include <string.h>
 
-#include "lblcbuffer.h"
+#include "lcbuffer.h"
 
 Test(cbuffer_create, zero_malloc)
 {

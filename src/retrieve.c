@@ -7,7 +7,7 @@
 
 #include <stdlib.h>
 
-#include "lblcbuffer.h"
+#include "lcbuffer.h"
 
 ssize_t cbuffer_retrieve(cbuffer_t *buffer, void *ptr_addr)
 {

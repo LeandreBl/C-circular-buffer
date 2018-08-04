@@ -5,7 +5,7 @@
 ** lsize
 */
 
-#include "lblcbuffer.h"
+#include "lcbuffer.h"
 
 size_t cbuffer_lsize(cbuffer_t *buffer)
 {

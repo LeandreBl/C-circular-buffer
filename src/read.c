@@ -5,7 +5,7 @@
 ** read
 */
 
-#include "lblcbuffer.h"
+#include "lcbuffer.h"
 
 size_t cbuffer_read(cbuffer_t *buffer, void *dest, size_t count)
 {

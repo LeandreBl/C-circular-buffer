@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "lblcbuffer.h"
+#include "lcbuffer.h"
 
 int cbuffer_create(cbuffer_t *buffer, size_t size)
 {

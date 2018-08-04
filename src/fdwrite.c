@@ -7,7 +7,7 @@
 
 #include <unistd.h>
 
-#include "lblcbuffer.h"
+#include "lcbuffer.h"
 
 static ssize_t rdsize(ssize_t rd, ssize_t count, size_t maxlen)
 {
