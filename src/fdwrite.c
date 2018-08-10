@@ -1,13 +1,13 @@
 /*
 ** EPITECH PROJECT, 2018
-** lblcbuffer
+** lbllbuffer
 ** File description:
 ** fdwrite
 */
 
 #include <unistd.h>
 
-#include "lcbuffer.h"
+#include "lbuffer.h"
 
 static ssize_t rdsize(ssize_t rd, ssize_t count, size_t maxlen)
 {
@@ -18,7 +18,7 @@ static ssize_t rdsize(ssize_t rd, ssize_t count, size_t maxlen)
 	return (rd);
 }
 
-ssize_t cbuffer_fdwrite(cbuffer_t *buffer, int fd, ssize_t count)
+ssize_t lbuffer_fdwrite(lbuffer_t *buffer, int fd, ssize_t count)
 {
 	int8_t block[FDWRITE_BUFFER_SIZE];
 	ssize_t total = 0;
@@ -26,11 +26,11 @@ ssize_t cbuffer_fdwrite(cbuffer_t *buffer, int fd, ssize_t count)
 	ssize_t wr;
 
 	do {
-		rd = rdsize(cbuffer_lsize(buffer), count, sizeof(block));
+		rd = rdsize(lbuffer_lsize(buffer), count, sizeof(block));
 		rd = read(fd, block, sizeof(block));
 		if (rd == -1)
 			return (-1);
-		wr = cbuffer_write(buffer, block, rd);
+		wr = lbuffer_write(buffer, block, rd);
 		total += wr;
 	} while (rd == (ssize_t)sizeof(block) && rd == wr);
 	return (total);

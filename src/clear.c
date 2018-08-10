@@ -5,9 +5,9 @@
 ** clear
 */
 
-#include "lcbuffer.h"
+#include "lbuffer.h"
 
-void cbuffer_clear(cbuffer_t *buffer)
+void lbuffer_clear(lbuffer_t *buffer)
 {
 	buffer->reader = buffer->buffer;
 	buffer->writer = buffer->buffer;

@@ -5,9 +5,9 @@
 ** size
 */
 
-#include "lcbuffer.h"
+#include "lbuffer.h"
 
-size_t cbuffer_size(cbuffer_t *buffer)
+size_t lbuffer_size(lbuffer_t *buffer)
 {
-	return (buffer->size - cbuffer_lsize(buffer));
+	return (buffer->size - lbuffer_lsize(buffer));
 }

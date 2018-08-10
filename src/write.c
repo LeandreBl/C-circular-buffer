@@ -5,9 +5,9 @@
 ** write
 */
 
-#include "lcbuffer.h"
+#include "lbuffer.h"
 
-size_t cbuffer_write(cbuffer_t *buffer, const void *src, size_t count)
+size_t lbuffer_write(lbuffer_t *buffer, const void *src, size_t count)
 {
 	size_t i;
 	const int8_t *p = src;

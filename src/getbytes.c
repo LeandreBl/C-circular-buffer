@@ -11,9 +11,9 @@
 	#include <stdio.h>
 
 
-#include "lcbuffer.h"
+#include "lbuffer.h"
 
-static bool buff_cmp(cbuffer_t *buffer, const int8_t *from, const char *pattern)
+static bool buff_cmp(lbuffer_t *buffer, const int8_t *from, const char *pattern)
 {
 	for (size_t i = 0; pattern[i] != '\0' && from != buffer->writer; ++i) {
 		if (from == buffer->buffer + buffer->size)
@@ -31,10 +31,10 @@ static ssize_t gb_err(int8_t **ptr)
 	return (0);
 }
 
-static ssize_t to_read_cmp(cbuffer_t *buffer, int8_t **ptr, const char *pattern)
+static ssize_t to_read_cmp(lbuffer_t *buffer, int8_t **ptr, const char *pattern)
 {
 	ssize_t rd = 0;
-	size_t size = cbuffer_size(buffer);
+	size_t size = lbuffer_size(buffer);
 	size_t len = strlen(pattern);
 	int8_t *p;
 
@@ -52,7 +52,7 @@ static ssize_t to_read_cmp(cbuffer_t *buffer, int8_t **ptr, const char *pattern)
 	return (rd + len);
 }
 
-ssize_t cbuffer_getbytes(cbuffer_t *buffer, void *ptr_addr, const char *pattern)
+ssize_t lbuffer_getbytes(lbuffer_t *buffer, void *ptr_addr, const char *pattern)
 {
 	ssize_t rd = 0	;
 	int8_t **ptr = ptr_addr;
@@ -64,5 +64,5 @@ ssize_t cbuffer_getbytes(cbuffer_t *buffer, void *ptr_addr, const char *pattern)
 	if (*ptr == NULL)
 		return (-1);
 	(*ptr)[rd] = 0;
-	return (cbuffer_read(buffer, *ptr, rd));
+	return (lbuffer_read(buffer, *ptr, rd));
 }

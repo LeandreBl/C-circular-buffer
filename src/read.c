@@ -5,9 +5,9 @@
 ** read
 */
 
-#include "lcbuffer.h"
+#include "lbuffer.h"
 
-size_t cbuffer_read(cbuffer_t *buffer, void *dest, size_t count)
+size_t lbuffer_read(lbuffer_t *buffer, void *dest, size_t count)
 {
 	size_t i;
 	int8_t *p = dest;

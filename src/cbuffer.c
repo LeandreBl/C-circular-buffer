@@ -8,9 +8,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "lcbuffer.h"
+#include "lbuffer.h"
 
-int cbuffer_create(cbuffer_t *buffer, size_t size)
+int lbuffer_create(lbuffer_t *buffer, size_t size)
 {
 	buffer->buffer = malloc(size);
 	if (buffer->buffer == NULL)
@@ -23,7 +23,7 @@ int cbuffer_create(cbuffer_t *buffer, size_t size)
 	return (0);
 }
 
-void cbuffer_destroy(cbuffer_t *buffer)
+void lbuffer_destroy(lbuffer_t *buffer)
 {
 	free(buffer->buffer);
 }
