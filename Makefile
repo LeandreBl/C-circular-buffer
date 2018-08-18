@@ -51,7 +51,7 @@ tests_run: $(TESTS_OBJS)
 	@$ $(CC) -lcriterion $(TESTS_OBJS) -o $@
 	@echo "$(CC) -lcriterion $(TESTS_OBJS) -o $@ \
 	["$(GREEN)"LINKING OK"$(NO_COLOR)"]"
-	./$@
+	valgrind ./$@
 	@$(RM) $@
 	@$(RM) $(TESTS_OBJS)
 
