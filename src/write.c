@@ -13,13 +13,10 @@ static size_t l_to_write(lbuffer_t *buffer, size_t to_write)
 {
 	size_t left;
 
-	if (buffer->writer < buffer->reader) {
+	if (buffer->writer < buffer->reader)
 		left = (size_t)(buffer->reader - buffer->writer);
-		if (left > to_write)
-			return (to_write);
-		return (left);
-	}
-	left = buffer->buffer + buffer->size - buffer->writer;
+	else
+		left = buffer->buffer + buffer->size - buffer->writer;
 	if (left > to_write)
 		return (to_write);
 	return (left);
