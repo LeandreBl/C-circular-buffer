@@ -10,6 +10,7 @@ NAME		= liblcbuffer.so
 CC		= gcc
 
 SRCS		= src/cbuffer.c
+SRCS		+= src/lock.c
 SRCS		+= src/read.c
 SRCS		+= src/write.c
 SRCS		+= src/lsize.c
