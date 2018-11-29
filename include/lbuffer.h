@@ -41,6 +41,7 @@ void lbuffer_clear(lbuffer_t *buffer);
 ssize_t lbuffer_retrieve(lbuffer_t *buffer, void *ptr_addr);
 
 ssize_t lbuffer_fdwrite(lbuffer_t *buffer, int fd, ssize_t count);
+ssize_t lbuffer_fdread(lbuffer_t *buffer, int fd, ssize_t count);
 
 int lbuffer_resize(lbuffer_t *buffer, size_t newsize);
 
