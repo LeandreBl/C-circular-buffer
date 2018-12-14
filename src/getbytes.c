@@ -8,9 +8,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-	#include <stdio.h>
-
-
 #include "lbuffer.h"
 
 static bool buff_cmp(lbuffer_t *buffer, const int8_t *from, const char *pattern)

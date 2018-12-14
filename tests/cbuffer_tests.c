@@ -164,7 +164,7 @@ Test(lbuffer_rdwr_not_char, various_tests)
 Test(lbuffer_getbytes, various_tests)
 {
 	lbuffer_t buffer;
-	char toto[] = "age=14:taille=1.45!";
+	char toto[] = "age=14:taille=1.45!oui ";
 	char *output;
 
 	lbuffer_create(&buffer, 128);
@@ -180,6 +180,9 @@ Test(lbuffer_getbytes, various_tests)
 	free(output);
 	cr_assert(lbuffer_getbytes(&buffer, &output, "!") == 5);
 	cr_assert(strcmp(output, "1.45!") == 0);
+	free(output);
+	cr_assert(lbuffer_getbytes(&buffer, &output, " ") == 4);
+	cr_assert(strcmp(output, "oui ") == 0);
 	free(output);
 	lbuffer_destroy(&buffer);
 }
