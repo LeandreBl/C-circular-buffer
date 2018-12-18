@@ -9,7 +9,7 @@
 
 void lbuffer_clear(lbuffer_t *buffer)
 {
-	buffer->reader = buffer->buffer;
-	buffer->writer = buffer->buffer;
-	buffer->empty = true;
+    buffer->reader = buffer->buffer;
+    buffer->writer = buffer->buffer;
+    buffer->empty = true;
 }
