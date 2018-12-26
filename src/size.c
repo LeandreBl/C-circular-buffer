@@ -9,5 +9,5 @@
 
 size_t lbuffer_size(lbuffer_t *buffer)
 {
-    return (buffer->size - lbuffer_lsize(buffer));
+  return (buffer->size - lbuffer_lsize(buffer));
 }
