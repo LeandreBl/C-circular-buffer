@@ -18,8 +18,8 @@ struct lbuffer_s {
 	int8_t *reader;
 	int8_t *writer;
 	int8_t *buffer;
-	pthread_mutex_t *lock;
 	size_t size;
+	pthread_mutex_t lock;
 	bool empty;
 };
 
