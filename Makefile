@@ -9,6 +9,8 @@ NAME		= liblcbuffer.so
 
 CC		= gcc
 
+ARCHIVER	= ar
+
 SRCS		= src/cbuffer.c
 SRCS		+= src/fdread.c
 SRCS		+= src/lock.c
@@ -64,7 +66,7 @@ clean:
 	$(RM) $(OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(NAME:.so=.a)
 
 re: fclean all
 
@@ -73,5 +75,8 @@ install: re
 	printf "\033[1m\033[31mError : try sudo make install\033[0m\n" && \
 	cp include/*.h /usr/include/ 2> /dev/null && \
 	printf "\033[1m\033[32mLibrary successfull installed !\033[0m\n"
+
+static: $(OBJS)
+	$(ARCHIVER) rc $(NAME:.so=.a) $(OBJS)
 
 .PHONY: all clean fclean re tests_run debug install
