@@ -79,4 +79,4 @@ install: re
 static: $(OBJS)
 	$(ARCHIVER) rc $(NAME:.so=.a) $(OBJS)
 
-.PHONY: all clean fclean re tests_run debug install
+.PHONY: all clean fclean re tests_run debug install static
