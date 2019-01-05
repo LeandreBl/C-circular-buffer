@@ -7,7 +7,7 @@
 
 #include "lbuffer.h"
 
-size_t lbuffer_size(lbuffer_t *buffer)
+inline size_t lbuffer_size(lbuffer_t *buffer)
 {
   return (buffer->size - lbuffer_lsize(buffer));
 }

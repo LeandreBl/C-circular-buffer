@@ -7,7 +7,7 @@
 
 #include "lbuffer.h"
 
-size_t lbuffer_lsize(lbuffer_t *buffer)
+inline size_t lbuffer_lsize(lbuffer_t *buffer)
 {
   if (buffer->reader < buffer->writer)
     return (buffer->buffer + buffer->size - buffer->writer + buffer->reader
