@@ -20,7 +20,6 @@ int lbuffer_create(lbuffer_t *buffer, size_t size)
   buffer->reader = buffer->buffer;
   buffer->writer = buffer->buffer;
   buffer->empty = true;
-  buffer->lock = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
   return (0);
 }
 

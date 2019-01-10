@@ -20,7 +20,6 @@ struct lbuffer_s {
 	int8_t *writer;
 	int8_t *buffer;
 	size_t size;
-	pthread_mutex_t lock;
 	bool empty;
 };
 
@@ -45,8 +44,5 @@ ssize_t lbuffer_fdwrite(lbuffer_t *buffer, int fd, ssize_t count) __THROW __nonn
 ssize_t lbuffer_fdread(lbuffer_t *buffer, int fd, ssize_t count) __THROW __nonnull((1));
 
 int lbuffer_resize(lbuffer_t *buffer, size_t newsize) __THROW __nonnull((1));
-
-int lbuffer_lock(lbuffer_t *buffer) __THROW __nonnull((1));
-int lbuffer_unlock(lbuffer_t *buffer) __THROW __nonnull((1));
 
 #endif /* !_LBL_CBUFFER */

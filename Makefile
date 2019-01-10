@@ -13,7 +13,6 @@ ARCHIVER	= ar
 
 SRCS		= src/cbuffer.c
 SRCS		+= src/fdread.c
-SRCS		+= src/lock.c
 SRCS		+= src/read.c
 SRCS		+= src/write.c
 SRCS		+= src/lsize.c
