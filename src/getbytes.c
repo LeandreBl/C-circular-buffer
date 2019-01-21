@@ -37,8 +37,7 @@ static ssize_t to_read_cmp(lbuffer_t *buffer, int8_t **ptr, const char *pattern)
 
   if (len == 0 || buffer->empty == true)
     return (gb_err(ptr));
-  for (p = buffer->reader;
-       p != buffer->writer && buff_cmp(buffer, p, pattern) == false; ++p) {
+  for (p = buffer->reader; p != buffer->writer && buff_cmp(buffer, p, pattern) == false; ++p) {
     if (size-- < len)
       return (gb_err(ptr));
     if (p == buffer->buffer + buffer->size)
