@@ -10,7 +10,7 @@
 inline size_t lbuffer_lsize(lbuffer_t *buffer)
 {
   if (buffer->reader < buffer->writer)
-    return (buffer->buffer + buffer->size - buffer->writer + buffer->reader - buffer->buffer);
+    return (buffer->size - buffer->writer + buffer->reader);
   else if (buffer->reader > buffer->writer)
     return (buffer->reader - buffer->writer);
   return ((buffer->empty) ? buffer->size : 0);
