@@ -29,7 +29,7 @@ ssize_t lbuffer_fdread(lbuffer_t *buffer, int fd, ssize_t count)
     rd = rdsize(lbuffer_lsize(buffer), count, sizeof(block));
     rd = lbuffer_read(buffer, block, rd);
     wr = write(fd, block, rd);
-    if (rd == -1)
+    if (wr == -1)
       return (-1);
     total += wr;
   } while (rd == (ssize_t)sizeof(block) && rd == wr);
