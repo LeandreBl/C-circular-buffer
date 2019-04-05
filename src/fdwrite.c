@@ -24,14 +24,15 @@ ssize_t lbuffer_fdwrite(lbuffer_t *buffer, int fd, ssize_t count)
   ssize_t total = 0;
   ssize_t rd;
   ssize_t wr;
+  ssize_t to_read;
 
   do {
-    rd = rdsize(lbuffer_lsize(buffer), count, sizeof(block));
-    rd = read(fd, block, sizeof(block));
+    to_read = rdsize(lbuffer_lsize(buffer), count, sizeof(block));
+    rd = read(fd, block, to_read);
     if (rd == -1)
       return (-1);
     wr = lbuffer_write(buffer, block, rd);
     total += wr;
-  } while (rd == (ssize_t)sizeof(block) && rd == wr);
+  } while (rd == to_read && rd == wr);
   return (total);
 }
