@@ -191,7 +191,7 @@ Test(lbuffer_resize, various_tests)
 {
 	lbuffer_t buffer;
 	char toto[] = "Je suis un tester de fonctions";
-	char test[sizeof(toto)] = { 0 };
+	char test[sizeof(toto)] = {0};
 
 	lbuffer_create(&buffer, sizeof(toto) - 10);
 	cr_assert(lbuffer_write(&buffer, toto, sizeof(toto)) == sizeof(toto) - 10);
